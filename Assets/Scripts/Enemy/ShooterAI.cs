@@ -20,6 +20,11 @@ public class ShooterAI : MonoBehaviour
     private Score score;
     private bool isDeath = false;
 
+    private float playerCurHp;
+
+    public AudioSource audioSource;
+    public AudioClip attacked;
+
     void Start()
     {
         score = FindObjectOfType<Score>();
@@ -30,6 +35,8 @@ public class ShooterAI : MonoBehaviour
 
     void Update()
     {
+        playerCurHp = FindObjectOfType<PlayerMove>().hp;
+
         rb.velocity = new Vector3(0,0,1);
         Vector3 direction = player.position - transform.position;
         //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -47,7 +54,7 @@ public class ShooterAI : MonoBehaviour
         
         if (hit2D.collider != null)
         {
-            if (hit2D.collider.gameObject.CompareTag("Player"))
+            if (hit2D.collider.gameObject.CompareTag("Player") && playerCurHp > 0)
             {
                 attack();
             }
@@ -98,6 +105,8 @@ public class ShooterAI : MonoBehaviour
         {
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             Instantiate(projective, projectiveStart.position, Quaternion.AngleAxis(angle, Vector3.forward)).transform.rotation = rotation;
+            audioSource.volume = 0.2f;
+            audioSource.PlayOneShot(attacked);
             time = 0f;
         }
     }

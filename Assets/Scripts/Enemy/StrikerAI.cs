@@ -20,6 +20,8 @@ public class StrikerAI : MonoBehaviour
     private Score score;
     private bool isDeath = false;
 
+    private float playerCurHp;
+
     void Start()
     {
         score = FindObjectOfType<Score>();
@@ -29,7 +31,9 @@ public class StrikerAI : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
+        playerCurHp = FindObjectOfType<PlayerMove>().hp;
+
         Vector3 direction = player.position - transform.position;
         //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         //rb.rotation = angle;
@@ -46,7 +50,7 @@ public class StrikerAI : MonoBehaviour
 
         if (hit2D.collider != null)
         {
-            if (hit2D.collider.gameObject.CompareTag("Player"))
+            if (hit2D.collider.gameObject.CompareTag("Player") && playerCurHp > 0)
             {
                 attack();
             }

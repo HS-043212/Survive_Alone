@@ -17,7 +17,14 @@ public class PlayerMove : MonoBehaviour
     float runSpeed = 1.3f;
 
     public Image bloodScreen;
-    
+    public Image deadScreen;
+    private bool isDead = false;
+
+    public AudioSource audioSource;
+    public AudioClip deadSound;
+    public AudioClip strikerHittingSound;
+    public AudioClip shooterHittingSound;
+
     void FixedUpdate()
     {
         if(Input.GetKey(KeyCode.LeftShift))
@@ -57,11 +64,14 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("StrikerProjective"))
+        if (collision.gameObject.CompareTag("StrikerProjective") && !isDead)
         {            
             hp -= collision.gameObject.GetComponent<StrikerProjective>().Damage;
             screenShake = collision.gameObject.GetComponent<StrikerProjective>().Damage;
-            
+
+            audioSource.volume = 0.8f;
+            audioSource.PlayOneShot(strikerHittingSound);
+
             CameraNoise.Instance.ShakeCamera(screenShake / 10, 0.03f);
             StartCoroutine(ShowBloodScreen());
 
@@ -70,16 +80,24 @@ public class PlayerMove : MonoBehaviour
 
             if (hp <= 0)
             {
-                Debug.Log("죽음");
-                //Destroy(gameObject);
+                isDead = true;
+                hp += -hp;
+                //Debug.Log("죽음");
+                audioSource.volume = 1f;
+                audioSource.PlayOneShot(deadSound);
+                StartCoroutine(ShowDeadScreen());
+
             }
         }
 
-        if (collision.gameObject.CompareTag("ShooterProjective"))
+        if (collision.gameObject.CompareTag("ShooterProjective") && !isDead)
         {
             hp -= collision.gameObject.GetComponent<ShooterProjective>().Damage;
             screenShake = collision.gameObject.GetComponent<ShooterProjective>().Damage;
-            
+
+            audioSource.volume = 0.8f;
+            audioSource.PlayOneShot(shooterHittingSound);
+
             CameraNoise.Instance.ShakeCamera(screenShake / 10 + 0.3f, 0.03f);
             StartCoroutine(ShowBloodScreen());
 
@@ -88,11 +106,26 @@ public class PlayerMove : MonoBehaviour
 
             if (hp <= 0)
             {
-                Debug.Log("죽음");
-                //Destroy(gameObject);
+                isDead = true;
+                hp += -hp;
+                //Debug.Log("죽음");
+                audioSource.volume = 1f;
+                audioSource.PlayOneShot(deadSound);
+                StartCoroutine(ShowDeadScreen());
+
             }
         }
     }
+
+    IEnumerator ShowDeadScreen()
+    {
+        for (float i = 0; i < 1.1; i += 0.0125f)
+        {
+            deadScreen.color = new Color(0, 0, 0, i);
+            yield return new WaitForSeconds(0.025f);
+        }
+    }
+
 
     IEnumerator ShowBloodScreen()
     {        

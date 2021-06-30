@@ -128,7 +128,7 @@ public class SMG : MonoBehaviour
                     shotCounter -= Time.deltaTime;
                     if (shotCounter <= 0)
                     {
-                        audioSource.volume = 0.5f;
+                        audioSource.volume = 0.3f;
                         audioSource.PlayOneShot(fireSound);
                         shotCounter = timeBetweenShots;
                         Bulletcontrolll newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bulletcontrolll;
@@ -139,6 +139,7 @@ public class SMG : MonoBehaviour
 
                         if (remainBullet == 0)
                         {
+                            audioSource.volume = 0.4f;
                             audioSource.PlayOneShot(bullet_Empty);
                         }
                     }
@@ -152,6 +153,7 @@ public class SMG : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && delaytime <= 0)
                 {
+                    audioSource.volume = 0.4f;
                     audioSource.PlayOneShot(bullet_Empty);
                 }
             }
@@ -164,12 +166,14 @@ public class SMG : MonoBehaviour
                 if (remainBullet <= 0 && Input.GetKeyDown("r"))
                 {
                     isReloading = true;
+                    audioSource.volume = 0.8f;
                     audioSource.PlayOneShot(reloadSound);
                     StartCoroutine(ReloadRoutine());
                 }
                 else if (Input.GetKeyDown("r"))
                 {
                     isReloading = true;
+                    audioSource.volume = 0.8f;
                     audioSource.PlayOneShot(reload_bulletLeft_Sound);
                     StartCoroutine(Reload_Routine());
                 }

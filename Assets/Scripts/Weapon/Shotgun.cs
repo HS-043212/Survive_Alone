@@ -128,7 +128,7 @@ public class Shotgun : MonoBehaviour
                     shotCounter -= Time.deltaTime;
                     if (shotCounter <= 0)
                     {
-                        audioSource.volume = 0.5f;
+                        audioSource.volume = 1f;
                         audioSource.PlayOneShot(fireSound);
                         shotCounter = timeBetweenShots;
                         for(int i = 0; i < 10; i++)
@@ -143,6 +143,7 @@ public class Shotgun : MonoBehaviour
 
                         if (remainBullet == 0)
                         {
+                            audioSource.volume = 0.4f;
                             audioSource.PlayOneShot(bullet_Empty);
                         }
                     }
@@ -156,6 +157,7 @@ public class Shotgun : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && delaytime <= 0)
                 {
+                    audioSource.volume = 0.4f;
                     audioSource.PlayOneShot(bullet_Empty);
                 }
             }
@@ -168,12 +170,14 @@ public class Shotgun : MonoBehaviour
                 if (remainBullet <= 0 && Input.GetKeyDown("r"))
                 {
                     isReloading = true;
+                    audioSource.volume = 0.8f;
                     audioSource.PlayOneShot(reloadSound);
                     StartCoroutine(ReloadRoutine());
                 }
                 else if (Input.GetKeyDown("r"))
                 {
                     isReloading = true;
+                    audioSource.volume = 0.8f;
                     audioSource.PlayOneShot(reload_bulletLeft_Sound);
                     StartCoroutine(Reload_Routine());
                 }
