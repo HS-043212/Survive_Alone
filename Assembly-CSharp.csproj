@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Enemy\StrikerProjective.cs" />
     <Compile Include="Assets\Scripts\Enemy\BigStrikerAI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Scripts\Player\HP.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponSwitch.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
@@ -106,12 +107,12 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Gun.cs" />
+    <Compile Include="Assets\Scripts\CameraNoise.cs" />
     <Compile Include="Assets\Scripts\Enemy\BigShooterAI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Scripts\CameraNoise.cs" />
-    <Compile Include="Assets\Scripts\Player\HP.cs" />
+    <Compile Include="Assets\Scripts\UI\Score.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

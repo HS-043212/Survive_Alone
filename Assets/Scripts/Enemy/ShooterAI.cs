@@ -17,10 +17,11 @@ public class ShooterAI : MonoBehaviour
     public float coolDown;
     private float time;
     private float hp = 480;
-
+    private Score score;
 
     void Start()
     {
+        score = FindObjectOfType<Score>();
         player = GameObject.Find("Player").transform;
         rb = this.GetComponent<Rigidbody2D>();
         time = coolDown;
@@ -76,6 +77,8 @@ public class ShooterAI : MonoBehaviour
 
             if (hp <= 0)
             {
+                score.scorePoint = score.scorePoint + 480;
+
                 Destroy(gameObject);
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Vector2 = UnityEngine.Vector2;
 
@@ -38,6 +39,8 @@ public class SMG : MonoBehaviour
     public AudioClip reload_bulletLeft_Sound;
     public AudioClip bullet_Empty;
 
+    public Text bulletText;
+
     public bool isReloading = false;
 
     void Start()
@@ -63,6 +66,9 @@ public class SMG : MonoBehaviour
 
     void Update()
     {
+        bulletText.text = $"{remainBullet.ToString("0")}";
+        bulletText.color = new Color(0.7450981f, 0.7450981f, 0.7450981f, 1);
+
         if (remainBullet <= 0)
         {
             isFiring = false;

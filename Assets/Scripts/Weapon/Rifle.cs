@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rifle : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class Rifle : MonoBehaviour
     public AudioClip reload_bulletLeft_Sound;
     public AudioClip bullet_Empty;
 
+    public Text bulletText;
+
+    WeaponSwitch weaponSwitch;
+
     public bool isReloading = false;
 
     void Start()
@@ -43,6 +48,7 @@ public class Rifle : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         remainBullet = 31;
         remainAmmo = 150;
+        GameObject.FindObjectOfType<WeaponSwitch>();
     }
 
     IEnumerator ReloadRoutine()
@@ -60,7 +66,10 @@ public class Rifle : MonoBehaviour
     }
 
     void Update()
-    {
+    {        
+        bulletText.text = $"{remainBullet.ToString("0")}";
+        bulletText.color = new Color(0.7450981f, 0.7450981f, 0.7450981f, 1);
+
         if (remainBullet <= 0)
         {
             isFiring = false;

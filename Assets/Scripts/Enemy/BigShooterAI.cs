@@ -18,10 +18,11 @@ public class BigShooterAI : MonoBehaviour
     private float time;
     public float delayTime = 1f;
     private float hp = 1500;
-
+    private Score score;
 
     void Start()
     {
+        score = FindObjectOfType<Score>();
         player = GameObject.Find("Player").transform;
         rb = this.GetComponent<Rigidbody2D>();
         time = coolDown;
@@ -76,6 +77,8 @@ public class BigShooterAI : MonoBehaviour
 
             if (hp <= 0)
             {
+                score.scorePoint = score.scorePoint + 1500;
+
                 Destroy(gameObject);
             }
         }

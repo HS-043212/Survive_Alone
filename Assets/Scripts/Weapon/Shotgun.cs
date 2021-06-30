@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Vector2 = UnityEngine.Vector2;
 
@@ -38,6 +39,8 @@ public class Shotgun : MonoBehaviour
     public AudioClip reload_bulletLeft_Sound;
     public AudioClip bullet_Empty;
 
+    public Text bulletText;
+
     public bool isReloading = false;
 
     void Start()
@@ -63,6 +66,9 @@ public class Shotgun : MonoBehaviour
 
     void Update()
     {
+        bulletText.text = $"{remainBullet.ToString("0")}";
+        bulletText.color = new Color(0.7450981f, 0.7450981f, 0.7450981f, 1);
+
         if (remainBullet <= 0)
         {
             isFiring = false;
@@ -125,8 +131,12 @@ public class Shotgun : MonoBehaviour
                         audioSource.volume = 0.5f;
                         audioSource.PlayOneShot(fireSound);
                         shotCounter = timeBetweenShots;
-                        Bulletcontrolll newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bulletcontrolll;
-                        newBullet.speed = bulletSpeed;
+                        for(int i = 0; i < 10; i++)
+                        {
+                            Bulletcontrolll newBullet =
+                                Instantiate(bullet, firePoint.position, firePoint.rotation) as Bulletcontrolll;
+                            newBullet.speed = bulletSpeed;
+                        }              
                         remainBullet -= 1;
 
                         CameraNoise.Instance.ShakeCamera(1.3f, 0.02f);

@@ -52,6 +52,7 @@ public class PlayerMove : MonoBehaviour
     {
         ProcessInputs();
         hpText.text = $"{hp.ToString("0")}%";
+        hpText.color = new Color(1, hp / 100, hp / 100, 1);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -17,10 +17,11 @@ public class StrikerAI : MonoBehaviour
     public float coolDown;
     private float time;
     private float hp = 320;
-
+    private Score score;
 
     void Start()
     {
+        score = FindObjectOfType<Score>();
         player = GameObject.Find("Player").transform;
         rb = this.GetComponent<Rigidbody2D>();
         time = coolDown;
@@ -74,6 +75,8 @@ public class StrikerAI : MonoBehaviour
 
             if (hp <= 0)
             {
+                score.scorePoint = score.scorePoint + 320;
+
                 Destroy(gameObject);
             }
         }
