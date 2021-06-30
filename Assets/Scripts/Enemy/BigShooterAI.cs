@@ -19,6 +19,7 @@ public class BigShooterAI : MonoBehaviour
     public float delayTime = 1f;
     private float hp = 1500;
     private Score score;
+    private bool isDeath = false;
 
     void Start()
     {
@@ -75,8 +76,10 @@ public class BigShooterAI : MonoBehaviour
         {
             hp -= collision.gameObject.GetComponent<Bulletcontrolll>().Damage;
 
-            if (hp <= 0)
+            if (hp <= 0 && !isDeath)
             {
+                isDeath = true;
+
                 score.scorePoint = score.scorePoint + 1500;
 
                 Destroy(gameObject);

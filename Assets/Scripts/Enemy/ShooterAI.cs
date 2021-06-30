@@ -18,6 +18,7 @@ public class ShooterAI : MonoBehaviour
     private float time;
     private float hp = 480;
     private Score score;
+    private bool isDeath = false;
 
     void Start()
     {
@@ -75,8 +76,10 @@ public class ShooterAI : MonoBehaviour
             hp -= collision.gameObject.GetComponent<Bulletcontrolll>().Damage;
             //Debug.Log(collision.gameObject.GetComponent<Bulletcontrolll>().Damage);
 
-            if (hp <= 0)
+            if (hp <= 0 && !isDeath)
             {
+                isDeath = true;
+
                 score.scorePoint = score.scorePoint + 480;
 
                 Destroy(gameObject);

@@ -18,6 +18,7 @@ public class StrikerAI : MonoBehaviour
     private float time;
     private float hp = 320;
     private Score score;
+    private bool isDeath = false;
 
     void Start()
     {
@@ -73,8 +74,10 @@ public class StrikerAI : MonoBehaviour
         {
             hp -= collision.gameObject.GetComponent<Bulletcontrolll>().Damage;
 
-            if (hp <= 0)
+            if (hp <= 0 && !isDeath)
             {
+                isDeath = true;
+
                 score.scorePoint = score.scorePoint + 320;
 
                 Destroy(gameObject);
