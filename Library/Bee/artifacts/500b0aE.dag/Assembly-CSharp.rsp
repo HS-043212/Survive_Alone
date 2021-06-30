@@ -345,6 +345,8 @@
 "Assets/Scripts/Player/HP.cs"
 "Assets/Scripts/Player/PlayerMove.cs"
 "Assets/Scripts/UI/Background.cs"
+"Assets/Scripts/UI/DarkScreen.cs"
+"Assets/Scripts/UI/ExitButton.cs"
 "Assets/Scripts/UI/Score.cs"
 "Assets/Scripts/UI/StartButton.cs"
 "Assets/Scripts/Weapon/Aim.cs"

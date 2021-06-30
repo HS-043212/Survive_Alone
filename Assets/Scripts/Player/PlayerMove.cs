@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -85,7 +86,7 @@ public class PlayerMove : MonoBehaviour
                 //Debug.Log("죽음");
                 audioSource.volume = 1f;
                 audioSource.PlayOneShot(deadSound);
-                StartCoroutine(ShowDeadScreen());
+                StartCoroutine(ShowDarkScreen());
 
             }
         }
@@ -111,13 +112,13 @@ public class PlayerMove : MonoBehaviour
                 //Debug.Log("죽음");
                 audioSource.volume = 1f;
                 audioSource.PlayOneShot(deadSound);
-                StartCoroutine(ShowDeadScreen());
-
+                StartCoroutine(ShowDarkScreen());
+                SceneManager.LoadScene("GameOver");
             }
         }
     }
 
-    IEnumerator ShowDeadScreen()
+    IEnumerator ShowDarkScreen()
     {
         for (float i = 0; i < 1.1; i += 0.0125f)
         {
