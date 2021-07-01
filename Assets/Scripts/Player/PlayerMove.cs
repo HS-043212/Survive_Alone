@@ -64,7 +64,7 @@ public class PlayerMove : MonoBehaviour
         hpText.text = $"{hp.ToString("0")}%";
         hpText.color = new Color(1, hp / 100, hp / 100, 1);
 
-        if(hp < 20 && !Recovering)
+        if(hp < 20 && hp >= 1 && !Recovering)
         {
             Recovering = true;
             StartCoroutine(HpRecovery());
