@@ -14,6 +14,8 @@ public class ESC : MonoBehaviour
     Image exit;
     Image explanation;
 
+    private bool use = false;
+
     private void Start()
     {
         exit = stop.GetComponent<Image>();
@@ -24,40 +26,39 @@ public class ESC : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!isStop) // 진행중이면
+            if (!use)
             {
-                stop.SetActive(true);
-                ex.gameObject.SetActive(true);
+                if (!isStop) // 진행중이면
+                {
+                    stop.SetActive(true);
+                    ex.gameObject.SetActive(true);
 
-                StartCoroutine(ShowExitButton());
-            }
-            else if(isStop) // 멈추고있으면
-            {
-                StartCoroutine(HideExitButton());
+                    use = true;
+                    exit.DOFade(1f, 0.5f);
+                    ex.DOFade(1f, 0.5f).OnComplete(() =>
+                    {
+                        Time.timeScale = 0;
+                        use = false;
+                    });
+                }
+                else if (isStop) // 멈추고있으면
+                {
+                    Time.timeScale = 1;
 
-                stop.SetActive(false);
-                ex.gameObject.SetActive(false);
-            }
+                    use = true;
+                    exit.DOFade(0f, 0.5f);
+                    ex.DOFade(0f, 0.5f).OnComplete(() =>
+                    {
+
+                        use = false;
+                        stop.SetActive(false);
+                        ex.gameObject.SetActive(false);
+                    });
+                }
 
             isStop = !isStop;
+            }
         }
     }
 
-    IEnumerator ShowExitButton()
-    {
-        exit.DOFade(1f, 0.5f);
-        ex.DOFade(1f, 0.5f);
-        yield return new WaitForSeconds(0.5f);
-
-        Time.timeScale = 0;
-    }
-
-    IEnumerator HideExitButton()
-    {
-        Time.timeScale = 1;
-        yield return new WaitForSeconds(0.5f);
-
-        exit.DOFade(0f, 0.5f);
-        ex.DOFade(0f, 0.5f);        
-    }
 }
