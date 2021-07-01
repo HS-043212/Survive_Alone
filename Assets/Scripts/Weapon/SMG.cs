@@ -27,7 +27,7 @@ public class SMG : MonoBehaviour
 
     public int damage;
 
-    private int remainAmmo;
+    //private int remainAmmo;
     public int remainBullet;
     public float reloadTime = 2.3f;
     public float reloadTime_bulletLeft = 1.7f;
@@ -39,15 +39,13 @@ public class SMG : MonoBehaviour
     public AudioClip reload_bulletLeft_Sound;
     public AudioClip bullet_Empty;
 
-    public Text bulletText;
-
     public bool isReloading = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         remainBullet = 17;
-        remainAmmo = 80;
+        //remainAmmo = 80;
     }
 
     IEnumerator ReloadRoutine()
@@ -66,9 +64,6 @@ public class SMG : MonoBehaviour
 
     void Update()
     {
-        bulletText.text = $"{remainBullet.ToString("0")}";
-        bulletText.color = new Color(0.7450981f, 0.7450981f, 0.7450981f, 1);
-
         if (remainBullet <= 0)
         {
             isFiring = false;
@@ -128,8 +123,7 @@ public class SMG : MonoBehaviour
                     shotCounter -= Time.deltaTime;
                     if (shotCounter <= 0)
                     {
-                        audioSource.volume = 0.3f;
-                        audioSource.PlayOneShot(fireSound);
+                        audioSource.PlayOneShot(fireSound, 0.3f);
                         shotCounter = timeBetweenShots;
                         Bulletcontrolll newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bulletcontrolll;
                         newBullet.speed = bulletSpeed;
@@ -139,8 +133,7 @@ public class SMG : MonoBehaviour
 
                         if (remainBullet == 0)
                         {
-                            audioSource.volume = 0.4f;
-                            audioSource.PlayOneShot(bullet_Empty);
+                            audioSource.PlayOneShot(bullet_Empty, 0.4f);
                         }
                     }
                 }
@@ -153,8 +146,7 @@ public class SMG : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && delaytime <= 0)
                 {
-                    audioSource.volume = 0.4f;
-                    audioSource.PlayOneShot(bullet_Empty);
+                    audioSource.PlayOneShot(bullet_Empty, 0.4f);
                 }
             }
         }
@@ -166,15 +158,13 @@ public class SMG : MonoBehaviour
                 if (remainBullet <= 0 && Input.GetKeyDown("r"))
                 {
                     isReloading = true;
-                    audioSource.volume = 0.8f;
-                    audioSource.PlayOneShot(reloadSound);
+                    audioSource.PlayOneShot(reloadSound, 0.8f);
                     StartCoroutine(ReloadRoutine());
                 }
                 else if (Input.GetKeyDown("r"))
                 {
                     isReloading = true;
-                    audioSource.volume = 0.8f;
-                    audioSource.PlayOneShot(reload_bulletLeft_Sound);
+                    audioSource.PlayOneShot(reload_bulletLeft_Sound, 0.8f);
                     StartCoroutine(Reload_Routine());
                 }
             }

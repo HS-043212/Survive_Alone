@@ -106,6 +106,7 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
 -r:"C:/Users/ROG/projectCYTOTL/Library/PackageCache/com.unity.cinemachine@2.7.3/Runtime/ThirdParty/clipper_library.dll"
 -r:"C:/Users/ROG/projectCYTOTL/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll"
 -r:"F:/Unity/2021.1.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
@@ -300,6 +301,7 @@
 -r:"F:/Unity/2021.1.11f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Numerics.Vectors.dll"
 -r:"F:/Unity/2021.1.11f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"F:/Unity/2021.1.11f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
+-r:"Library/Bee/artifacts/500b0aE.dag/Assembly-CSharp-firstpass.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/Cinemachine.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/com.unity.cinemachine.editor.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/PsdPlugin.ref.dll"
@@ -346,6 +348,7 @@
 "Assets/Scripts/Player/PlayerMove.cs"
 "Assets/Scripts/UI/Background.cs"
 "Assets/Scripts/UI/DarkScreen.cs"
+"Assets/Scripts/UI/ESC.cs"
 "Assets/Scripts/UI/ExitButton.cs"
 "Assets/Scripts/UI/Score.cs"
 "Assets/Scripts/UI/StartButton.cs"

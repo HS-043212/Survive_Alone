@@ -101,7 +101,7 @@ public class BigShooterAI : MonoBehaviour
     void attack()
     {
         isAttack = true;
-        if (time >= coolDown)
+        if (time >= coolDown && playerCurHp > 0)
         {
             StartCoroutine(shootDelay());
             time = 0f;
@@ -113,9 +113,8 @@ public class BigShooterAI : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            Instantiate(projective, projectiveStart.position, Quaternion.AngleAxis(angle, Vector3.forward)).transform.rotation = rotation;
-            audioSource.volume = 0.3f;
-            audioSource.PlayOneShot(attacked);
+            Instantiate(projective, projectiveStart.position, Quaternion.AngleAxis(angle, Vector3.forward)).transform.rotation = rotation;            
+            audioSource.PlayOneShot(attacked, 0.3f);
             yield return new WaitForSeconds(delayTime);
         }
     }

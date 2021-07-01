@@ -101,12 +101,11 @@ public class ShooterAI : MonoBehaviour
     void attack()
     {
         isAttack = true;
-        if (time >= coolDown)
+        if (time >= coolDown && playerCurHp > 0)
         {
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            Instantiate(projective, projectiveStart.position, Quaternion.AngleAxis(angle, Vector3.forward)).transform.rotation = rotation;
-            audioSource.volume = 0.2f;
-            audioSource.PlayOneShot(attacked);
+            Instantiate(projective, projectiveStart.position, Quaternion.AngleAxis(angle, Vector3.forward)).transform.rotation = rotation;            
+            audioSource.PlayOneShot(attacked, 0.2f);
             time = 0f;
         }
     }

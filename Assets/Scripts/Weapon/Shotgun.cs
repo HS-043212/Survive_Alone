@@ -27,7 +27,7 @@ public class Shotgun : MonoBehaviour
 
     public int damage;
 
-    private int remainAmmo;
+    //private int remainAmmo;
     public int remainBullet;
     public float reloadTime = 2.6f;
     public float reloadTime_bulletLeft = 1.8f;
@@ -38,16 +38,14 @@ public class Shotgun : MonoBehaviour
     public AudioClip reloadSound;
     public AudioClip reload_bulletLeft_Sound;
     public AudioClip bullet_Empty;
-
-    public Text bulletText;
-
+  
     public bool isReloading = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         remainBullet = 11;
-        remainAmmo = 50;
+        //remainAmmo = 50;
     }
 
     IEnumerator ReloadRoutine()
@@ -66,9 +64,6 @@ public class Shotgun : MonoBehaviour
 
     void Update()
     {
-        bulletText.text = $"{remainBullet.ToString("0")}";
-        bulletText.color = new Color(0.7450981f, 0.7450981f, 0.7450981f, 1);
-
         if (remainBullet <= 0)
         {
             isFiring = false;
@@ -128,13 +123,14 @@ public class Shotgun : MonoBehaviour
                     shotCounter -= Time.deltaTime;
                     if (shotCounter <= 0)
                     {
-                        audioSource.volume = 1f;
-                        audioSource.PlayOneShot(fireSound);
+                        audioSource.PlayOneShot(fireSound, 0.9f);
                         shotCounter = timeBetweenShots;
                         for(int i = 0; i < 10; i++)
                         {
+                            firePoint.eulerAngles = new Vector3(0,0 ,Random.Range(-10f,10f));
+
                             Bulletcontrolll newBullet =
-                                Instantiate(bullet, firePoint.position, firePoint.rotation) as Bulletcontrolll;
+                                Instantiate(bullet, firePoint.position, transform.rotation*firePoint.rotation) as Bulletcontrolll;
                             newBullet.speed = bulletSpeed;
                         }              
                         remainBullet -= 1;
@@ -143,8 +139,7 @@ public class Shotgun : MonoBehaviour
 
                         if (remainBullet == 0)
                         {
-                            audioSource.volume = 0.4f;
-                            audioSource.PlayOneShot(bullet_Empty);
+                            audioSource.PlayOneShot(bullet_Empty, 0.4f);
                         }
                     }
                 }
@@ -157,8 +152,7 @@ public class Shotgun : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && delaytime <= 0)
                 {
-                    audioSource.volume = 0.4f;
-                    audioSource.PlayOneShot(bullet_Empty);
+                    audioSource.PlayOneShot(bullet_Empty, 0.4f);
                 }
             }
         }
@@ -170,15 +164,13 @@ public class Shotgun : MonoBehaviour
                 if (remainBullet <= 0 && Input.GetKeyDown("r"))
                 {
                     isReloading = true;
-                    audioSource.volume = 0.8f;
-                    audioSource.PlayOneShot(reloadSound);
+                    audioSource.PlayOneShot(reloadSound, 0.8f);
                     StartCoroutine(ReloadRoutine());
                 }
                 else if (Input.GetKeyDown("r"))
                 {
                     isReloading = true;
-                    audioSource.volume = 0.8f;
-                    audioSource.PlayOneShot(reload_bulletLeft_Sound);
+                    audioSource.PlayOneShot(reload_bulletLeft_Sound, 0.8f);
                     StartCoroutine(Reload_Routine());
                 }
             }

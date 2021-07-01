@@ -13,10 +13,10 @@ public class DarkScreen : MonoBehaviour
 
     IEnumerator ShowDarkScreen()
     {
-        for (float i = 1; i > 0; i -= 0.0125f)
+        for (float i = 1; i > 0; i -= 0.05f)
         {
             darkScreen.color = new Color(0, 0, 0, i);
-            yield return new WaitForSeconds(0.025f);
+            yield return new WaitForSeconds(0.00625f);
         }
     }
 }

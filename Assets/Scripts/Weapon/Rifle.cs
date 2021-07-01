@@ -25,7 +25,7 @@ public class Rifle : MonoBehaviour
 
     public int damage;
 
-    private int remainAmmo;
+    //private int remainAmmo;
     public int remainBullet;
     public float reloadTime = 2.9f;
     public float reloadTime_bulletLeft = 2.2f;
@@ -37,18 +37,13 @@ public class Rifle : MonoBehaviour
     public AudioClip reload_bulletLeft_Sound;
     public AudioClip bullet_Empty;
 
-    public Text bulletText;
-
-    WeaponSwitch weaponSwitch;
-
     public bool isReloading = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         remainBullet = 31;
-        remainAmmo = 150;
-        GameObject.FindObjectOfType<WeaponSwitch>();
+        //remainAmmo = 150;
     }
 
     IEnumerator ReloadRoutine()
@@ -66,10 +61,7 @@ public class Rifle : MonoBehaviour
     }
 
     void Update()
-    {        
-        bulletText.text = $"{remainBullet.ToString("0")}";
-        bulletText.color = new Color(0.7450981f, 0.7450981f, 0.7450981f, 1);
-
+    {
         if (remainBullet <= 0)
         {
             isFiring = false;
@@ -128,9 +120,8 @@ public class Rifle : MonoBehaviour
                 {
                     shotCounter -= Time.deltaTime;
                     if (shotCounter <= 0)
-                    {
-                        audioSource.volume = 0.3f;
-                        audioSource.PlayOneShot(fireSound);
+                    {                       
+                        audioSource.PlayOneShot(fireSound, 0.3f);
                         shotCounter = timeBetweenShots;
                         Bulletcontrolll newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bulletcontrolll;
                         newBullet.speed = bulletSpeed;
@@ -139,9 +130,8 @@ public class Rifle : MonoBehaviour
                         CameraNoise.Instance.ShakeCamera(0.8f, 0.02f);
                         
                         if(remainBullet == 0)
-                        {
-                            audioSource.volume = 0.4f;
-                            audioSource.PlayOneShot(bullet_Empty);
+                        {                            
+                            audioSource.PlayOneShot(bullet_Empty, 0.4f);
                         }
                     }
                 }
@@ -153,9 +143,8 @@ public class Rifle : MonoBehaviour
             else
             {
                 if (Input.GetMouseButtonDown(0) && delaytime <= 0)
-                {
-                    audioSource.volume = 0.4f;
-                    audioSource.PlayOneShot(bullet_Empty);
+                {                    
+                    audioSource.PlayOneShot(bullet_Empty, 0.4f);
                 }
             }
         }
@@ -167,15 +156,13 @@ public class Rifle : MonoBehaviour
                 if (remainBullet <= 0 && Input.GetKeyDown("r"))
                 {
                     isReloading = true;
-                    audioSource.volume = 0.8f;
-                    audioSource.PlayOneShot(reloadSound);
+                    audioSource.PlayOneShot(reloadSound, 0.8f);
                     StartCoroutine(ReloadRoutine());
                 }
                 else if (Input.GetKeyDown("r"))
                 {
                     isReloading = true;
-                    audioSource.volume = 0.8f;
-                    audioSource.PlayOneShot(reload_bulletLeft_Sound);
+                    audioSource.PlayOneShot(reload_bulletLeft_Sound, 0.8f);
                     StartCoroutine(Reload_Routine());
                 }
             }

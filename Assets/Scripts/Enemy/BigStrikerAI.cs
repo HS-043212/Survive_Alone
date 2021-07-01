@@ -96,7 +96,7 @@ public class BigStrikerAI : MonoBehaviour
     void attack()
     {
         isAttack = true;
-        if (time >= coolDown)
+        if (time >= coolDown && playerCurHp > 0)
         {
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             Instantiate(projective, projectiveStart.position, Quaternion.AngleAxis(angle, Vector3.forward)).transform.rotation = rotation;
