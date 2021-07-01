@@ -346,7 +346,6 @@
 "Assets/Scripts/Enemy/StrikerProjective.cs"
 "Assets/Scripts/Player/HP.cs"
 "Assets/Scripts/Player/PlayerMove.cs"
-"Assets/Scripts/UI/Background.cs"
 "Assets/Scripts/UI/DarkScreen.cs"
 "Assets/Scripts/UI/ESC.cs"
 "Assets/Scripts/UI/ExitButton.cs"

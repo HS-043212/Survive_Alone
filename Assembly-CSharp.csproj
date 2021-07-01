@@ -89,7 +89,6 @@
     <Compile Include="Assets\Animations\GGEZ\PerfectPixelCamera\Demo\Assets\ZoomDemo.cs" />
     <Compile Include="Assets\Animations\GGEZ\PerfectPixelCamera\Scripts\PerfectPixelCamera.cs" />
     <Compile Include="Assets\Scripts\Enemy\ShooterProjective.cs" />
-    <Compile Include="Assets\Scripts\UI\Background.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
