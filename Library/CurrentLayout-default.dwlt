@@ -45,7 +45,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: Inspector
   m_RootView: {fileID: 5}
-  m_MinSize: {x: 875, y: 392}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &3
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_MinSize: {x: 630, y: 601}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
-  controlID: 1762
+  controlID: 557
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,7 +120,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 1007
-  m_MinSize: {x: 875, y: 392}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 910, y: 342}
   m_MaxSize: {x: 22005, y: 10021}
   vertical: 0
-  controlID: 1625
+  controlID: 214
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 342}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 1507
+  controlID: 17
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -458,7 +458,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
       y: 21
       width: 879
       height: 441
-    m_Scale: {x: 0.30625, y: 0.30625}
+    m_Scale: {x: 0.32083333, y: 0.32083333}
     m_Translation: {x: 439.5, y: 220.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -479,12 +479,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1435.102
-      y: -720
-      width: 2870.204
-      height: 1440
+      x: -1369.8701
+      y: -687.27277
+      width: 2739.7402
+      height: 1374.5455
     m_MinimalGUI: 1
-  m_defaultScale: 0.30625
+  m_defaultScale: 0.32083333
   m_LastWindowPixelSize: {x: 879, y: 462}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -793,9 +793,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6c510000
-    m_LastClickedID: 20844
-    m_ExpandedIDs: 0000000050510000525100005451000056510000585100005a51000000ca9a3b
+    m_SelectedIDs: 78510000
+    m_LastClickedID: 20856
+    m_ExpandedIDs: 000000005c5100005e5100006051000062510000645100006651000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -823,7 +823,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000050510000525100005451000056510000585100005a51000000ca9a3b
+    m_ExpandedIDs: 000000005c5100005e51000060510000625100006451000066510000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -850,22 +850,22 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000ac3c00007039000088390000b2390000b639000020410000123b0000103b0000f83b0000024e0000464b00005a4a0000664a00003c450000703700002c390000883700007438000022390000a8380000003900009e3900002647000070480000f8380000fa3800000a3900008239000080390000de3900000c3900000e39000014390000a83a0000ac3a0000ae3a0000b23a0000d43d0000b03a00001039000008390000983d000012390000c83a000014480000a8480000ba4b00009c390000a0390000d6380000d8380000ea38000008440000d2650000887200003a3900003e7c00002c3a0000303a0000d6390000d03f0000cc390000188b0000c28900001ad40000ae3b0000a084fffff04f0000f85300002450000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Ingame
+      m_OriginalName: Ingame
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 20888
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:
@@ -910,7 +910,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5aecffff98ecffff06eeffff0aeeffff10eeffff82faffff42fbffff9a520000
+      m_ExpandedIDs: 64f6ffffa2f6ffff10f8ffff14f8ffff1af8ffff2afaffff5afaffff42fbffff34550000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
